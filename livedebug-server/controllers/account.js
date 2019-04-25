@@ -27,12 +27,13 @@ class AccountController {
     }
 
     Account.create(acc)
-     .then(account => {
-       res.status(201).json(account);
-     })
-     .catch(err => {
-       res.status(500).json(err);
-     })
+    .then(account => {
+      console.log(account, "ini akunnya");
+      res.status(201).json(account);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    })
   }
 
   static remove(req, res) {

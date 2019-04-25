@@ -8,6 +8,7 @@ mongoose.connect(`mongodb://localhost/phase-2-${process.env.NODE_ENV}`, { useNew
 
 const index = require('./routes/index');
 
+app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/', index);

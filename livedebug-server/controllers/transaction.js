@@ -2,10 +2,11 @@ const Transaction = require('../models/transaction');
 
 class TransactionController {
   static transfer(req, res) {
+    console.log(req.body);
     Transaction.create({
       amount: req.body.amount,
-      from: req.transferFromId,
-      to: req.transferToId
+      from: req.body.accountNumber,
+      to: req.body.accountNumberTo
     })
     .then(success => {
       Transaction.find({

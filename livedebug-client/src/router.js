@@ -14,6 +14,11 @@ export default new Router({
       component: () => import('./views/Collection.vue')
     },
     {
+      path: '/favorite',
+      name: 'favorite',
+      component: () => import('./views/Favorite.vue')
+    },
+    {
       path: '/',
       name: 'home',
       component: Home,
@@ -24,11 +29,6 @@ export default new Router({
           component: UserGallery
         }
       ]
-    },
-    {
-      path: '/favorite',
-      name: 'favorite',
-      component: () => import('./views/Favorite.vue')
     }
   ]
 })

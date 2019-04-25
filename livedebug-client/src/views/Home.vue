@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto pt-5">
-    <div class="flex flex-col justify-center" v-if="!isLoading">
+    <div class="flex flex-col justify-center" v-if="isLoading">
       <img class="w-full h-64 self-center text-center mb-4" src="../assets/loading.svg">
 
       <span class="text-center text-grey-dark font-normal text-xl">Waiting data to be loaded</span>
@@ -8,7 +8,7 @@
     <div v-else>
       <h3 class="text-dark text-xl mb-4">People To Follow</h3>
       <div class="flex justify-between flex-wrap">
-        <user
+        <User
           v-for="(user, index) in users"
           :key="index"
           :id="user.behanceId"
@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <routing-view @myFavorite="myFavorite"/>
+    <router-view @myFavorite="myFavorite"/>
   </div>
 </template>
 
@@ -44,7 +44,9 @@ export default {
 
   methods: {
     fetchUser () {
-      this.$store.dispatch('fetchUsers')
+      this.$store.dispatch('fetchUsers').then(data => {
+        this.isLoading = false
+      })
     },
 
     seeProject (id) {
@@ -63,9 +65,7 @@ export default {
   },
 
   mounted () {
-    this.fetchUser().then(data => {
-      this.isLoading = false
-    })
+    this.fetchUser()
   }
 }
 </script>

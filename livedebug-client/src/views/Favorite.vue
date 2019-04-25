@@ -34,17 +34,17 @@
 </template>
 
 <script>
-import Gallery from "@/components/Gallery.vue";
+import Gallery from '@/components/Gallery.vue'
 
 export default {
-  props: ["favorites"],
+  props: ['favorites'],
 
   components: {
     Gallery
   },
 
-  mounted() {}
-};
+  mounted () {}
+}
 </script>
 
 <style>
